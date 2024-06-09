@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crush Question</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+        .yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .no {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pogi ba Ako</h1>
+        <button class="yes" onclick="alert('Hays, lam ko naman yun🥰🥰😻😽🫶')">Yes</button>
+        <button class="no" onclick="moveButton()">No</button>
+    </div>
+
+    <script>
+        function moveButton() {
+            const noButton = document.querySelector('.no');
+            const yesButton = document.querySelector('.yes');
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const noButtonRect = noButton.getBoundingClientRect();
+
+            // Move the "No" button to a random position
+            const newTop = Math.random() * (containerRect.height - noButtonRect.height);
+            const newLeft = Math.random() * (containerRect.width - noButtonRect.width);
+
+            noButton.style.position = 'absolute';
+            noButton.style.top = `${newTop}px`;
+            noButton.style.left = `${newLeft}px`;
+
+            // Decrease the size of the "No" button significantly
+            noButton.style.fontSize = `${parseFloat(window.getComputedStyle(noButton).fontSize) * 0.8}px`;
+            noButton.style.padding = `${parseFloat(noButton.style.padding) * 0.8}px`;
+
+            // Increase the size of the "Yes" button significantly
+            yesButton.style.fontSize = `${parseFloat(window.getComputedStyle(yesButton).fontSize) * 1.2}px`;
+            yesButton.style.padding = `${parseFloat(yesButton.style.padding) * 1.2}px`;
+        }
+
+        document.querySelector('.no').addEventListener('click', moveButton);
+    </script>
+</body>
+</html>
